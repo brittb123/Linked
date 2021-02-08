@@ -47,6 +47,7 @@ public:
 		if (m_first == nullptr)
 		{
 			node = m_first;
+			node->data = value;
 			node = m_last;
 		}
 
@@ -55,6 +56,7 @@ public:
 			node->next() = m_first;
 			m_first = node;
 			node->next()->previous() = node;
+			node->data = value;
 		}
 
 		m_nodeCount++;
@@ -69,6 +71,7 @@ public:
 			m_last->next() = newNode;
 			m_last = newNode;
 			newNode->next() = nullptr;
+			newNode->data = value;
 		}
 
 		m_nodeCount++;
