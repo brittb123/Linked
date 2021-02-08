@@ -10,62 +10,132 @@ public:
 
 	}
 
-	List(List<T>&) {}
+	List(List<T>&) 
+	{
+	
+	}
 
-	~List() {}
+	~List() 
+	{
+	
+	}
 
-	void destroy() {}
+	void destroy() 
+	{
+	
+	}
 
-	Iterator<T> begin() {}
+	Iterator<T> begin() 
+	{
+	
+	}
 
-	Iterator<T> end() {}
+	Iterator<T> end() 
+	{
 
-	bool contains(const T& object) {}
+	}
+
+	bool contains(const T& object) 
+	{
+	
+	}
 
 	void pushFront(const T& value) const
     {
-		value = new Node<T>();
-		if(List::m_first = nullptr)
+		Node<T>* node = new Node<T>(value);
+
+		if (m_first == nullptr)
 		{
-			value = m_first;
+			node = m_first;
+			node = m_last;
 		}
-		else
+
+		else 
 		{
-			value = m_first.next();
+			node->next() = m_first;
+			m_first = node;
+			node->next()->previous() = node;
 		}
-	
+
+		m_nodeCount++;
+
 	}
 
 	void pushBack(const T& value) 
 	{
-		value = new Node<T>();
-		if (List::m_last = nullptr)
+		Node<T>* newNode = new Node<T>(value);
+		if(m_last->next() == nullptr)
 		{
-			value = m_last;
+			m_last->next() = newNode;
+			m_last = newNode;
+			newNode->next() = nullptr;
 		}
-		else
-		{
 
+		m_nodeCount++;
+
+	}
+
+	bool insert(const T& value, int index) 
+	{
+		Node<T>* node = new Node<T>(value);
+		node->next() = index;
+		
+	}
+
+	bool remove(const T& value) 
+	{
+		if(value == nullptr)
+		{
+			return false;
+		}
+
+		while(m_first != value) 
+		{
+			
+			return true;
 		}
 	}
 
-	bool insert(const T& value, int index) {}
+	void const print() 
+	{
+		while (m_first != nullptr)
+		{
+			std::cout << m_first->data;
+			m_first->Node<T>::next() = m_first;
+		}
 
-	bool remove(const T& value) {}
+		std::cout << m_first->data << std::endl;
+	}
 
-	void const print() {}
-
-	void initalize() {}
-
-	bool isEmpty() const {}
-
-	bool getData(Iterator<T>& iter, int index) {}
+	void initalize() 
+	{
 	
-	int const getLength() {}
+	}
 
-	const List<T>& operator = (const List<T>& otherList) {}
+	bool isEmpty() const 
+	{
+	
+	}
 
-	void sort() {}
+	bool getData(Iterator<T>& iter, int index) 
+	{
+	
+	}
+	
+	int const getLength() 
+	{
+	
+	}
+
+	const List<T>& operator = (const List<T>& otherList) 
+	{
+	
+	}
+
+	void sort() 
+	{
+	
+	}
 
 private:
 
