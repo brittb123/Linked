@@ -27,19 +27,28 @@ public:
 	
 	}
 
-	Iterator<T> begin() 
+	Iterator<T> begin() const
 	{
-	
+		return m_first;
 	}
 
-	Iterator<T> end() 
+	Iterator<T> end() const
 	{
-
+		return m_last->Node<T>::next();
 	}
 
 	bool contains(const T& object) 
 	{
-	
+		for (Iterator<int> iter = begin(); iter != end(); iter++)
+		{
+			if (iter != object)
+				iter++;
+
+			if (iter = object)
+				return true;
+		}
+
+		return false;
 	}
 
 	void pushFront(const T& value) const
@@ -69,22 +78,38 @@ public:
 	{
 		Node<T>* newNode = new Node<T>(value);
 
-			if(m_last->next() == nullptr)
+			if (value = nullptr)
+			   return;
+
+			if (m_last = nullptr)
 			{
-				m_last->next() = newNode;
-				m_last = newNode;
-				newNode->next() = nullptr;
-				newNode->data = value;
+			   m_first = newNode;
+			   m_last = newNode;
+			   newNode->data = value;
+			   m_nodeCount++;
+			   return;
 			}
 
-		m_nodeCount++;
+			newNode->previous() = m_last;
+			m_last->next() = newNode;
+			m_last = newNode;
+			newNode->next() = nullptr;
+			newNode->data = value;
+			
+		    m_nodeCount++;
 	}
 
 	bool insert(const T& value, int index) 
 	{
-		Node<T>* node = new Node<T>(value);
-		node->next() = index;
+		if(value = index)
+		{
+			Node<T>* node = new Node<T>(value);
+			node->next() = index;
+			m_nodeCount++;
+			return true;
+		}
 		
+		return false;
 	}
 
 	bool remove(const T& value) 
@@ -121,6 +146,8 @@ public:
 	{
 		if (m_nodeCount == 0)
 			return true;
+
+		return false;
 	}
 
 	bool getData(Iterator<T>& iter, int index) 
@@ -140,7 +167,7 @@ public:
 
 	void sort() 
 	{
-	
+		
 	}
 
 private:
