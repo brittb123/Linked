@@ -1,6 +1,8 @@
 #pragma once
+#include <iostream>
 #include "Iterator.h"
 #include "Node.h"
+
 template <typename T>
 class List
 {
@@ -66,16 +68,16 @@ public:
 	void pushBack(const T& value) 
 	{
 		Node<T>* newNode = new Node<T>(value);
-		if(m_last->next() == nullptr)
-		{
-			m_last->next() = newNode;
-			m_last = newNode;
-			newNode->next() = nullptr;
-			newNode->data = value;
-		}
+
+			if(m_last->next() == nullptr)
+			{
+				m_last->next() = newNode;
+				m_last = newNode;
+				newNode->next() = nullptr;
+				newNode->data = value;
+			}
 
 		m_nodeCount++;
-
 	}
 
 	bool insert(const T& value, int index) 
@@ -101,23 +103,24 @@ public:
 
 	void const print() 
 	{
-		while (m_first != nullptr)
+		for(Iterator<int> iter = begin(); iter != end(); iter++)
 		{
-			std::cout << m_first->data;
-			m_first->Node<T>::next() = m_first;
+			std::cout << *iter << std::endl;
 		}
 
-		std::cout << m_first->data << std::endl;
 	}
 
 	void initalize() 
 	{
-	
+		m_first = nullptr;
+		m_last = nullptr;
+		m_nodeCount = 0;
 	}
 
 	bool isEmpty() const 
 	{
-	
+		if (m_nodeCount == 0)
+			return true;
 	}
 
 	bool getData(Iterator<T>& iter, int index) 
@@ -127,7 +130,7 @@ public:
 	
 	int const getLength() 
 	{
-	
+		return m_nodeCount;
 	}
 
 	const List<T>& operator = (const List<T>& otherList) 
